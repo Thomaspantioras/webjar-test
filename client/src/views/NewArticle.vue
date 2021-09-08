@@ -2,11 +2,11 @@
   <div>
     <form action="action_page.php">
       <div>
-        <h1>Register</h1>
-        <p>Please fill in this form to create an account.</p>
+        <h1>Create an Article</h1>
+        <p>Please fill in this form to create an artcle.</p>
         <div class="fields-container">
           <div class="field">
-            <label for="email"><b>Email</b></label>
+            <label for="title"><b>Title</b></label>
             <input
               type="text"
               placeholder="Enter Email"
@@ -16,32 +16,28 @@
             />
           </div>
           <div class="field">
-            <label for="psw"><b>Password</b></label>
-            <input
-              type="password"
-              placeholder="Enter Password"
-              name="psw"
-              id="psw"
+            <label for="description"><b>Description</b></label>
+            <textarea
+              id="description"
+              name="description"
+              placeholder="Type description here"
+              rows="10"
               required
-            />
+            ></textarea>
           </div>
-
           <div class="field">
-            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <label for="writing_date"><b>Writing date</b></label>
+
             <input
-              type="password"
-              placeholder="Repeat Password"
-              name="psw-repeat"
-              id="psw-repeat"
-              required
+              type="date"
+              id="writing_date"
+              name="writing_date"
+              min="2021-01-01"
+              max="2031-12-31"
             />
           </div>
         </div>
-        <button type="submit" class="registerbtn">Register</button>
-      </div>
-
-      <div class="container login">
-        <p>Already have an account? <a href="#">Login</a>.</p>
+        <button type="submit" class="create_btn">Create</button>
       </div>
     </form>
   </div>
