@@ -1,15 +1,12 @@
 <template>
   <div>
-    <ul>
-      <Article />
-      <Article />
-      <Article />
-      <Article />
-      <Article />
-      <Article />
-      <Article />
-      <Article />
-    </ul>
+    <div
+      v-for="(article, index) in articles"
+      :key="index"
+    >
+      <Article :article="article"/>
+    </div>
+
   </div>
 </template>
 
@@ -17,9 +14,17 @@
 import Article from "./Article.vue";
 export default {
   components: { Article },
+  props: {
+    articles: {
+      type: Array,
+      default: () => []
+    }
+  },
+  mounted() {
+    console.log("articles: ",this.articles)
+  }
 };
 </script>
 
-<style lang="sc
-Artilcess" scoped>
+<style lang="scss" scoped>
 </style>

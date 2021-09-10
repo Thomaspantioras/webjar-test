@@ -3,7 +3,7 @@
     <!-- <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" /> -->
     List of Articles
-    <ArticlesList />
+    <ArticlesList :articles="articles"/>
   </div>
 </template>
 
@@ -11,6 +11,7 @@
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 import ArticlesList from "../components/ArticlesList.vue";
+import { api } from '../helpers/api';
 
 export default {
   name: "Home",
@@ -18,6 +19,14 @@ export default {
     ArticlesList,
     // HelloWorld,
   },
+  data() {
+    return {
+      articles: []
+    };
+  },
+  async mounted() {
+    this.articles = await api.getArticles();
+  }
 };
 </script>
 

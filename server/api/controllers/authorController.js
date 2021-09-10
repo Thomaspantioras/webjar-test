@@ -17,3 +17,15 @@ exports.getAllArticles = (req, res, next) => {
     res.send(articles)
   }).catch(next);
 }
+
+exports.getArticlesByAuthor = (req, res, next) => {
+  // Author.find({}).then(authors => {
+  //   var articles = []
+  //   authors.map(
+  //     author => author.articles.map(
+  //       article => articles.push(article)
+  //     )
+  //   );
+  //   res.send(articles)
+  // }).catch(next);
+}
