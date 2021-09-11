@@ -3,13 +3,25 @@ const Author = require('../models/authors');
 const router = express.Router();
 
 const authorController = require("../controllers/authorController");
+const articleController = require("../controllers/articleController");
 
 router.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 router.get('/articles', (req, res, next) => {
-  authorController.getAllArticles(req, res, next)
+  articleController.getAllArticlesSortedByDate(req, res, next)
 });
+router.post('/articles', (req, res, next) => {
+  articleController.createArticle(req, res, next)
+});
+
+router.get("/articles/:id", (req, res, next) => {
+  articleController.getArticlesByAuthorId(req, res, next);
+});
+
+// router.get('/articles', (req, res, next) => {
+//   authorController.getAllArticles(req, res, next)
+// });
 // get a list of authors from the database
 router.get("/authors", (req, res, next) => {
   

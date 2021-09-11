@@ -21,6 +21,9 @@ export default {
       default: () => {}
     }
   },
+  mounted() {
+    // console.log("article: ",this.article)
+  }
 };
 </script>
 

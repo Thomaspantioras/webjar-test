@@ -39,8 +39,8 @@ const AuthorSchema = new Schema({
   password: {
     type: String,
     required: [true,'Password field is required']
-  },
-  articles: [ArticleSchema]
+  }
+  // articles: [ArticleSchema]
 });
 
 const Author = mongoose.model('author', AuthorSchema);

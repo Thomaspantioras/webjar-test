@@ -12,7 +12,12 @@ const handleError =
 export const api = {
   getArticles: handleError(async () => {
     const res = await axios.get(baseURL);
-    console.log(res.data);
+    // console.log(res.data);
+    return res.data;
+  }),
+  getArticlesByAuthorId: handleError(async (id) => {
+    const res = await axios.get(baseURL + id);
+    console.log("helper", res.data);
     return res.data;
   }),
   // getWord: handleError(async id => {

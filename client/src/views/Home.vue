@@ -21,11 +21,13 @@ export default {
   },
   data() {
     return {
-      articles: []
+      articles: [],
+      articlesById: []
     };
   },
   async mounted() {
     this.articles = await api.getArticles();
+    this.articlesById = await api.getArticlesByAuthorId("613b8946b960a236a9064727");
   }
 };
 </script>
