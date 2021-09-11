@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Author = require('./authors');
 
 
 // create an article Schema
@@ -20,10 +21,11 @@ const ArticleSchema = new Schema({
     type: Number,
     default: 0
   },
-  author_id: {
-    type: String,
-    required: [true,'author_id field is required']
-  }
+  // author_id: {
+  //   type: String,
+  //   required: [true,'author_id field is required']
+  // }
+  author: { type: Schema.Types.ObjectId, ref: 'author' }
 });
 
 // // create author schema and model

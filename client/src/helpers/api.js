@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:4000/api/articles/";
+const baseURL = "http://localhost:4000/api/";
 
 const handleError =
   (fn) =>
@@ -10,13 +10,18 @@ const handleError =
     });
 
 export const api = {
+  registerAuthor: handleError(async (payload) => {
+    const res = await axios.post(baseURL + "authors/", payload);
+    console.log(res.data);
+    return res.data;
+  }),
   getArticles: handleError(async () => {
-    const res = await axios.get(baseURL);
+    const res = await axios.get(baseURL + "articles/");
     // console.log(res.data);
     return res.data;
   }),
   getArticlesByAuthorId: handleError(async (id) => {
-    const res = await axios.get(baseURL + id);
+    const res = await axios.get(baseURL + "articles/" + id);
     console.log("helper", res.data);
     return res.data;
   }),
