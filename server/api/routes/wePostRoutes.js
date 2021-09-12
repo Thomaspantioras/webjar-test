@@ -2,6 +2,18 @@ const express = require('express');
 const bcrypt = require('bcrypt');
 const Author = require('../models/authors');
 const router = express.Router();
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb) {
+    cb(null, './uploads/')
+  },
+  filename: function(req, file, cb) {
+    cb(null, new Date().toISOString() + file.originalname)
+  },
+})
+// const upload = multer({dest: 'uploads/'});
+const upload = multer({storage: storage});
 
 const authorController = require("../controllers/authorController");
 const articleController = require("../controllers/articleController");
@@ -12,7 +24,8 @@ router.get('/', (req, res) => {
 router.get('/articles', (req, res, next) => {
   articleController.getAllArticlesSortedByDate(req, res, next)
 });
-router.post('/articles', (req, res, next) => {
+router.post('/articles', upload.single('article_image'), (req, res, next) => {
+  console.log("req.file: ", req.file)
   articleController.createArticle(req, res, next)
 });
 

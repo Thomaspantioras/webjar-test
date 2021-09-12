@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const Author = require('./authors');
 
+const Photo = new Schema({
+  photoPath: {type: String},
+  photo: Buffer
+});
 
 // create an article Schema
 const ArticleSchema = new Schema({
@@ -29,6 +33,10 @@ const ArticleSchema = new Schema({
     type: String,
     required: [true,'author_full_name field is required']
   },
+  article_image: { 
+    type: String 
+  }
+  // photo: Photo,
   // author: { type: Schema.Types.ObjectId, ref: 'author' }
 });
 

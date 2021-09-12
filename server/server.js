@@ -13,6 +13,7 @@ const app = express();
 mongoose.connect('mongodb://localhost/wepost');
 mongoose.Promise = global.Promise;
 
+app.use('/uploads',express.static('uploads'));
 app.use(cors());
 app.use(bodyParser.json());
 // app.use(express.json()) Since Express 4.16+ the body parsing functionality has become builtin with express

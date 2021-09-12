@@ -7,7 +7,10 @@
     <div>views: {{article.views}}</div>
   </div>
   <h2 v-if="article.subtitle">{{article.subtitle}}</h2>
-  <div v-if="article.image">image</div>
+  <div v-if="article.article_image">
+    <img :src=imgUrl alt="article image" >
+    <!-- <img :src=["http://localhost:4000/"+ this.article.article_image] alt="" srcset=""> -->
+  </div>
   <div>{{article.description}}</div>
   <hr>
 </div>
@@ -19,6 +22,11 @@ export default {
     article: {
       type: Object,
       default: () => {}
+    }
+  },
+  computed: {
+    imgUrl() {
+      return "http://localhost:4000/" + this.article.article_image 
     }
   },
   mounted() {

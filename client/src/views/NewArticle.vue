@@ -18,12 +18,16 @@
           </div>
           <div class="field">
             <label for="image"><b>Upload Image</b></label>
-            <input 
+            <input
+              style="display: none" 
               type="file"
               id="image"
               name="image"
               value=""
+              @change="onFiledSelected"
+              ref="fileInput"
             />
+            <button @click="$refs.fileInput.click()">Pick Image</button>
         </div>
           <div class="field">
             <label for="subtitle"><b>Subtitle</b></label>
@@ -53,7 +57,7 @@
               id="published_date"
               name="published_date"
               v-model="publishedDate"
-              min="2021-01-01"
+              min="2020-01-01"
               max="2031-12-31"
             />
           </div>
@@ -78,7 +82,8 @@ export default {
       title: "",
       subtitle: "",
       description: "",
-      publishedDate: ""
+      publishedDate: "",
+      selectedFile: null
     }
   },
   computed: {
@@ -90,18 +95,31 @@ export default {
   },
   methods: {
     async onSubmit() {
+      const formData = new FormData();
+      formData.append('title', this.title);
+      formData.append('subtitle', this.subtitle);
+      formData.append('description', this.description);
+      formData.append('date', this.publishedDate);
+      formData.append('author_id', this.authorId);
+      formData.append('author_full_name', this.authorFullName);
+      formData.append('article_image', this.selectedFile, this.selectedFile.name);
 
-      const body = {
-        title: this.title,
-        description: this.description,
-        date: this.publishedDate,
-        author_id: this.authorId,
-        author_full_name: this.authorFullName
-      }
-      const result = await api.createArticle(body);
-      // console.log("RESULT: ", result)
+      // const body = {
+      //   title: this.title,
+      //   description: this.description,
+      //   date: this.publishedDate,
+      //   author_id: this.authorId,
+      //   author_full_name: this.authorFullName
+      // }
+      // console.log("RESULT: ", ...formData)
+      const result = await api.createArticle(formData);
+      // const result = await api.createArticle(body);
       if (result) this.$router.push("/");
 
+    },
+    onFiledSelected(event) {
+      this.selectedFile = event.target.files[0];
+      // console.log("event: ", this.selectedFile)
     }
   },
 };

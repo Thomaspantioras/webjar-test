@@ -1,6 +1,11 @@
+// const multer = require('multer');
+// const upload = multer({dest: '/uploads/'});
 const Article = require('../models/articles');
 
 exports.createArticle = (req,res,next) => {
+  console.log("req.file2: ", req.file)
+  req.body.article_image = req.file.path;
+  console.log("req.body2: ", req.body)
     Article.create(req.body).then( (article) => {
       res.send(article);
     }).catch(next);
