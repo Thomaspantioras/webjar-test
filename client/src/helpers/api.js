@@ -26,8 +26,10 @@ export const api = {
     console.log("createArticle:", res.data);
     return res.data;
   }),
-  getArticles: handleError(async () => {
-    const res = await axios.get(baseURL + "articles/");
+  getArticles: handleError(async (page) => {
+    const res = await axios.get(baseURL + "articles/", {
+      params: { page: page },
+    });
     // console.log(res.data);
     return res.data;
   }),

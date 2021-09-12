@@ -12,7 +12,8 @@ exports.createArticle = (req,res,next) => {
 }
 
 exports.getAllArticlesSortedByDate = (req, res, next) => {
-  Article.find().sort({date: -1}).skip(10).limit(10).then(articles => res.send(articles)).catch(next);
+  console.log("req.file: ", req.query.page)
+  Article.find().sort({date: -1}).skip(Number(req.query.page)).limit(10).then(articles => res.send(articles)).catch(next);
 }
 
 exports.getArticlesByAuthorId = (req, res, next) => {

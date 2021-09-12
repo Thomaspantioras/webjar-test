@@ -22,10 +22,11 @@ router.get('/', (req, res) => {
   res.send('Hello, World!');
 });
 router.get('/articles', (req, res, next) => {
+  // console.log("req.: ", req.query.page)
+  // console.log()
   articleController.getAllArticlesSortedByDate(req, res, next)
 });
 router.post('/articles', upload.single('article_image'), (req, res, next) => {
-  console.log("req.file: ", req.file)
   articleController.createArticle(req, res, next)
 });
 

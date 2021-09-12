@@ -8,6 +8,7 @@ export default new Vuex.Store({
     isLoggedIn: false,
     authorId: "",
     authorFullName: "",
+    currentPage: 0,
   },
   mutations: {
     setIsLoggedIn(state, payload) {
@@ -19,6 +20,9 @@ export default new Vuex.Store({
     setAuthorFullName(state, payload) {
       state.authorFullName = payload;
     },
+    setCurrentPage(state, payload) {
+      state.currentPage = payload;
+    },
   },
   getters: {
     isLoggedIn: (state) => {
@@ -29,6 +33,9 @@ export default new Vuex.Store({
     },
     authorFullName: (state) => {
       return state.authorFullName;
+    },
+    currentPage: (state) => {
+      return state.currentPage;
     },
   },
   actions: {},
