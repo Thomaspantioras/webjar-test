@@ -24,7 +24,7 @@ export default {
 .link-container a {
   cursor: pointer;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 20px;
 }
 
 /* .link-container a::after {

@@ -1,26 +1,29 @@
 <template>
   <div>
     <h1>Login page</h1>
-    <form action="action_page.php" method="post">
+    <form @submit.prevent="onSubmit">
       <div class="container">
         <div class="field">
           <label for="email"><b>Email</b></label>
           <input
-            type="text"
-            placeholder="Enter Email"
-            name="email"
-            id="email"
-            required
-          />
+              type="email"
+              placeholder="Enter Email"
+              name="email"
+              id="email"
+              v-model="email"
+              required
+            />
         </div>
         <div class="field">
           <label for="psw"><b>Password</b></label>
           <input
-            type="password"
-            placeholder="Enter Password"
-            name="psw"
-            required
-          />
+              type="password"
+              placeholder="Enter Password"
+              name="psw"
+              id="psw"
+              v-model="password"
+              required
+            />
         </div>
 
         <button type="submit">Login</button>
@@ -30,7 +33,29 @@
 </template>
 
 <script>
-export default {};
+import { api } from '../helpers/api';
+export default {
+  data() {
+    return {
+      // loggedIn: false
+      email: "",
+      password: ""
+    }
+  },
+  methods: {
+    async onSubmit() {
+   
+        const body = {
+          email: this.email,
+          password: this.password
+        }
+          console.log("Im logIN!: ", body)
+
+        await api.loginAuthor(body)
+     
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>

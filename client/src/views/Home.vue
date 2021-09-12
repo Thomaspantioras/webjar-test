@@ -2,7 +2,7 @@
   <div class="home">
     <!-- <img alt="Vue logo" src="../assets/logo.png" />
     <HelloWorld msg="Welcome to Your Vue.js App" /> -->
-    List of Articles
+    List of Articles 
     <ArticlesList :articles="articles"/>
   </div>
 </template>
@@ -12,6 +12,7 @@
 import HelloWorld from "@/components/HelloWorld.vue";
 import ArticlesList from "../components/ArticlesList.vue";
 import { api } from '../helpers/api';
+// import { mapGetters } from 'vuex';
 
 export default {
   name: "Home",
@@ -28,7 +29,12 @@ export default {
   async mounted() {
     this.articles = await api.getArticles();
     this.articlesById = await api.getArticlesByAuthorId("613b8946b960a236a9064727");
-  }
+  },
+  // computed: {
+  //   ...mapGetters([
+  //     'isLoggedIn',
+  //   ])
+  // },
 };
 </script>
 

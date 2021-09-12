@@ -3,7 +3,8 @@
     <Logo />
     <div class="menu">
       <BaseLink path="/login" linkText="Login" />
-      <BaseLink path="/signup" linkText="Signup" />
+      <BaseLink v-if="!isLoggedIn" path="/signup" linkText="Signup" />
+      <BaseLink v-if="isLoggedIn" path="/new-article" linkText="Create Article" />
       <!-- <Menu class="menu" :menuLinks="menuLinks"/>
       <LoginButton class="login-button"/> -->
     </div>
@@ -13,8 +14,15 @@
 <script>
 import BaseLink from "./BaseLink.vue";
 import Logo from "./Logo.vue";
+import { mapGetters } from 'vuex';
+
 export default {
   components: { BaseLink, Logo },
+  computed: {
+    ...mapGetters([
+      'isLoggedIn',
+    ])
+  },
 };
 </script>
 

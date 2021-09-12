@@ -15,6 +15,11 @@ export const api = {
     console.log(res.data);
     return res.data;
   }),
+  loginAuthor: handleError(async (payload) => {
+    const res = await axios.post(baseURL + "authors/login", payload);
+    console.log("API:", res.data);
+    return res.data;
+  }),
   getArticles: handleError(async () => {
     const res = await axios.get(baseURL + "articles/");
     // console.log(res.data);
@@ -22,7 +27,7 @@ export const api = {
   }),
   getArticlesByAuthorId: handleError(async (id) => {
     const res = await axios.get(baseURL + "articles/" + id);
-    console.log("helper", res.data);
+    console.log("helper2", res.data);
     return res.data;
   }),
   // getWord: handleError(async id => {
