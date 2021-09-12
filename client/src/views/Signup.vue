@@ -65,9 +65,7 @@
         <button type="submit" class="registerbtn">Register</button>
       </div>
 
-      <div class="container login">
-        <p>Already have an account? <a href="#">Login</a>.</p>
-      </div>
+
     </form>
   </div>
 </template>
@@ -76,6 +74,7 @@
 import { api } from '../helpers/api';
 
 export default {
+  // components: { BaseLink },
   data() {
     return {
       name: "",

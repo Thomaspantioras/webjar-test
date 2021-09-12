@@ -9,7 +9,7 @@
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+// import HelloWorld from "@/components/HelloWorld.vue";
 import ArticlesList from "../components/ArticlesList.vue";
 import { api } from '../helpers/api';
 // import { mapGetters } from 'vuex';

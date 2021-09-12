@@ -6,17 +6,18 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     isLoggedIn: false,
-    loggedInAuthor: {
-      authorId: "",
-      fullName: "",
-    },
+    authorId: "",
+    authorFullName: "",
   },
   mutations: {
     setIsLoggedIn(state, payload) {
-      state.loggedInAuthor = payload;
+      state.isLoggedIn = payload;
     },
-    setLoggedInAuthor(state, payload) {
-      state.loggedInAuthor = payload;
+    setAuthorId(state, payload) {
+      state.authorId = payload;
+    },
+    setAuthorFullName(state, payload) {
+      state.authorFullName = payload;
     },
   },
   getters: {
@@ -24,10 +25,10 @@ export default new Vuex.Store({
       return state.isLoggedIn;
     },
     authorId: (state) => {
-      return state.loggedInAuthor.authorId;
+      return state.authorId;
     },
-    fullName: (state) => {
-      return state.loggedInAuthor.fullName;
+    authorFullName: (state) => {
+      return state.authorFullName;
     },
   },
   actions: {},

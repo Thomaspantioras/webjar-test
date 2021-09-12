@@ -37,22 +37,27 @@ import { api } from '../helpers/api';
 export default {
   data() {
     return {
-      // loggedIn: false
       email: "",
       password: ""
     }
   },
   methods: {
     async onSubmit() {
-   
-        const body = {
-          email: this.email,
-          password: this.password
-        }
-          console.log("Im logIN!: ", body)
 
-        await api.loginAuthor(body)
-     
+      const body = {
+        email: this.email,
+        password: this.password
+      }
+
+      const {name, surname, _id} = await api.loginAuthor(body);
+
+      if (_id){
+        this.$store.commit('setIsLoggedIn', true);
+        this.$store.commit('setAuthorFullName', name + " " + surname);
+        this.$store.commit('setAuthorId', _id);
+        this.$router.push("/");
+      }
+
     }
   },
 };

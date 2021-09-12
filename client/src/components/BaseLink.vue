@@ -21,6 +21,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.link-container {
+  margin: 0 0.5rem;
+}
 .link-container a {
   cursor: pointer;
   text-decoration: none;

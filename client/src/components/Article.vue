@@ -2,7 +2,7 @@
 <div>
   <h1>{{article.title}}</h1>
   <div class="details">
-    <div>{{article.author}}author</div>
+    <div>{{article.author_full_name}}</div>
     <div>{{article.date}}</div>
     <div>views: {{article.views}}</div>
   </div>

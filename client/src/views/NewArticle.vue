@@ -1,17 +1,18 @@
 <template>
-  <div>
-    <form action="action_page.php">
+  <div v-if="isLoggedIn">
+    <form  @submit.prevent="onSubmit">
       <div>
         <h1>Create an Article</h1>
-        <p>Please fill in this form to create an artcle.</p>
+        <p>Please fill in this form to create an article.</p>
         <div class="fields-container">
           <div class="field">
             <label for="title"><b>Title</b></label>
             <input
               type="text"
               placeholder="Enter Email"
-              name="email"
-              id="email"
+              name="title"
+              id="title"
+              v-model="title"
               required
             />
           </div>
@@ -20,18 +21,20 @@
             <textarea
               id="description"
               name="description"
+              v-model="description"
               placeholder="Type description here"
               rows="10"
               required
             ></textarea>
           </div>
           <div class="field">
-            <label for="writing_date"><b>Writing date</b></label>
+            <label for="published_date"><b>Published date</b></label>
 
             <input
               type="date"
-              id="writing_date"
-              name="writing_date"
+              id="published_date"
+              name="published_date"
+              v-model="publishedDate"
               min="2021-01-01"
               max="2031-12-31"
             />
@@ -41,10 +44,47 @@
       </div>
     </form>
   </div>
+  <div v-else>
+    <h3>You have to logged in first</h3>
+  </div>
 </template>
 
 <script>
-export default {};
+import { api } from '../helpers/api';
+import { mapGetters } from 'vuex';
+
+export default {
+  data() {
+    return {
+      title: "",
+      description: "",
+      publishedDate: ""
+    }
+  },
+  computed: {
+    ...mapGetters([
+      'isLoggedIn',
+      'authorId',
+      'authorFullName'
+    ])
+  },
+  methods: {
+    async onSubmit() {
+
+      const body = {
+        title: this.title,
+        description: this.description,
+        date: this.publishedDate,
+        author_id: this.authorId,
+        author_full_name: this.authorFullName
+      }
+      const result = await api.createArticle(body);
+      // console.log("RESULT: ", result)
+      if (result) this.$router.push("/");
+
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>
