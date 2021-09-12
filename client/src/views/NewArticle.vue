@@ -9,11 +9,30 @@
             <label for="title"><b>Title</b></label>
             <input
               type="text"
-              placeholder="Enter Email"
+              placeholder="Enter Title"
               name="title"
               id="title"
               v-model="title"
               required
+            />
+          </div>
+          <div class="field">
+            <label for="image"><b>Upload Image</b></label>
+            <input 
+              type="file"
+              id="image"
+              name="image"
+              value=""
+            />
+        </div>
+          <div class="field">
+            <label for="subtitle"><b>Subtitle</b></label>
+            <input
+              type="text"
+              placeholder="Enter Subtitle"
+              name="subtitle"
+              id="subtitle"
+              v-model="subtitle"
             />
           </div>
           <div class="field">
@@ -29,7 +48,6 @@
           </div>
           <div class="field">
             <label for="published_date"><b>Published date</b></label>
-
             <input
               type="date"
               id="published_date"
@@ -39,6 +57,7 @@
               max="2031-12-31"
             />
           </div>
+          
         </div>
         <button type="submit" class="create_btn">Create</button>
       </div>
@@ -57,6 +76,7 @@ export default {
   data() {
     return {
       title: "",
+      subtitle: "",
       description: "",
       publishedDate: ""
     }
@@ -94,7 +114,7 @@ export default {
   width: fit-content;
   margin: auto;
   justify-content: space-evenly;
-  height: 25vh;
+  height: 40vh;
 }
 .field {
   display: flex;
@@ -102,5 +122,8 @@ export default {
 }
 label {
   margin-right: 1rem;
+}
+input[type="file"] {
+  width: 55%;
 }
 </style>
