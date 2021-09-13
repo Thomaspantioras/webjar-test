@@ -1,13 +1,45 @@
 <template>
   <div class="footer">
-    <a href="#" class="previous">&laquo; Previous</a>
-    <a href="#" class="next">Next &raquo;</a>
+    <a href="#" class="previous" @click="previousArticles">&laquo; Previous</a>
+    <a href="#" class="next" @click="nextArticles">Next &raquo;</a>
   </div>
 </template>
 
 <script>
+import { api } from '../helpers/api';
+import { mapGetters } from 'vuex';
   export default {
-    
+    data() {
+      return {
+        fArticles: []
+      }
+    },
+    computed: {
+    ...mapGetters([
+      'currentPage'
+    ]),
+    // getArticles: async () => {
+    // const articles = await api.getArticles(this.currentPage);
+    //   return articles
+    // }
+  },
+    methods: {
+      async previousArticles() {
+        if (this.currentPage) {
+          const articles = await api.getArticles(this.currentPage - 1);
+          this.$store.commit('setCurrentArticles', articles);
+          this.$store.commit('setCurrentPage', this.currentPage - 1);
+          // this.fArticles = await api.getArticles(this.currentPage - 1);
+        }
+        console.log("previ!!!")
+      },
+      async nextArticles() {
+        const articles = await api.getArticles(this.currentPage + 1);
+        this.$store.commit('setCurrentArticles', articles);
+        this.$store.commit('setCurrentPage', this.currentPage + 1);
+        console.log("nxt!!!")
+      }
+    },
   }
 </script>
 
@@ -33,12 +65,4 @@ a:hover {
   color: black;
 }
 
-/* .next {
-  background-color: #04AA6D;
-  color: white;
-} */
-
-/* .round {
-  border-radius: 50%;
-} */
 </style>
