@@ -25,7 +25,7 @@
               required
             />
         </div>
-
+        <p v-if="message">{{message}}</p>
         <button type="submit">Login</button>
       </div>
     </form>
@@ -38,7 +38,8 @@ export default {
   data() {
     return {
       email: "",
-      password: ""
+      password: "",
+      message: ""
     }
   },
   methods: {
@@ -49,15 +50,15 @@ export default {
         password: this.password
       }
 
-      const {name, surname, _id} = await api.loginAuthor(body);
-
-      if (_id){
+      try {
+        const {name, surname, _id} = await api.loginAuthor(body);
         this.$store.commit('setIsLoggedIn', true);
         this.$store.commit('setAuthorFullName', name + " " + surname);
         this.$store.commit('setAuthorId', _id);
         this.$router.push("/");
+      } catch (error) {
+        this.message = "Invalid emali or password";
       }
-
     }
   },
 };

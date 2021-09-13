@@ -7,6 +7,7 @@ const handleError =
   (...params) =>
     fn(...params).catch((error) => {
       console.log(error);
+      console.log("Email or password is incorrect");
     });
 
 export const api = {
@@ -15,8 +16,8 @@ export const api = {
     return res.data;
   }),
   loginAuthor: handleError(async (payload) => {
-    console.log("payload: ", payload);
     const res = await axios.post(baseURL + "authors/login", payload);
+    console.log("payload: ", res);
     return res.data[0];
   }),
   createArticle: handleError(async (payload) => {

@@ -44,6 +44,6 @@ export default {
   text-decoration: none;
 }
 .text {
-  font-size: 40px;
+  font-size: 35px;
 }
 </style>

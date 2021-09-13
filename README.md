@@ -41,3 +41,7 @@ npm run serve
 
 App running at:
   http://localhost:8080/  
+
+
+## Populate mongoDb documents
+Use an app like MongoDB Compass Community to import initial json data from the folder `demoJsonData` to populate the database.

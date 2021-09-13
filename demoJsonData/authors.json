@@ -1,0 +1,7 @@
+{"_id":{"$oid":"613b8946b960a236a9064727"},"name":"matteo","surname":"Pantioras","email":"mat.pantior@gmail.com","password":"$2a$10$5nwmcbfku9yP0e79cjOuO.eCIDirjiUxVdA2SQCp6F.9ltk7Of3fq","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"613b895eb960a236a9064729"},"name":"Ana","surname":"Parice","email":"ana.pantior@gmail.com","password":"$2a$10$8IBZhb3wZjtoMrmjWnKoTuUkojQYRpGjhBBkgVQdUa4tLNsPvZq3O","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"613b89b0b960a236a9064731"},"name":"Aimi","surname":"Blandi","email":"aimilia@gmail.com","password":"$2a$10$z/ZZ4EJNZkzMZNwUxT0DUOh/htA/Xb92EKQpteDma7/wG0sHQqpZK","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"613b89d6b960a236a9064733"},"name":"Konstantina","surname":"Duze","email":"konstan@gmail.com","password":"$2a$10$EqynUod.0UOug/OIVmyfOe4ysiUQKyKD1h3qeiJKYzMYTbHC6nZfC","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"613b89ecb960a236a9064735"},"name":"Thomas","surname":"Muse","email":"thomas.muse@gmail.com","password":"$2a$10$scUN7NhCdAccpw4XkFNcLOB.9KUVNsROOIiBObPt9sBnGyCcrF/j.","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"613b89feb960a236a9064737"},"name":"Tzeni","surname":"Neque","email":"tzeni.neque@gmail.com","password":"$2a$10$flxDCVJtKuZ1OWFjjaFOCeDw8ZpfhpgrkKzkhms0fE/ahcUU/7jwu","__v":{"$numberInt":"0"}}
+{"_id":{"$oid":"613f6a8f46aed24b7f781194"},"name":"Tom","surname":"Lewis","email":"tom@gmail.com","password":"$2b$10$uyz3Uy7x8Bi3rZP7brMNTuFfwASCtxuwjUij1vB621dyIoEtudYUq","articles":[],"__v":{"$numberInt":"0"}}

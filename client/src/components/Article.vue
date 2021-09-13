@@ -3,17 +3,14 @@
   <h1 class="title" @click="updateArticleViews">{{article.title}}</h1>
   <div class="details">
     <div class="author" @click="getArticlesByAuthor">
-      <!-- <a href="#" class="previous" @click="previousArticles">&laquo; Previous</a> -->
       <b>{{article.author_full_name}}</b>
     </div>
-    <!-- <div>{{article.date}}</div> -->
     <div>{{formatedDate}}</div>
     <div>views: {{article.views}}</div>
   </div>
   <h2 v-if="article.subtitle">{{article.subtitle}}</h2>
   <div v-if="article.article_image">
     <img :src=imgUrl alt="article image" >
-    <!-- <img :src=["http://localhost:4000/"+ this.article.article_image] alt="" srcset=""> -->
   </div>
   <div class="description">{{article.description}}</div>
   <hr>
@@ -39,7 +36,7 @@ export default {
     },
   },
   mounted() {
-    console.log("article: ",this.article)
+    // console.log("article: ",this.article)
   },
   methods: {
     async getArticlesByAuthor() {
@@ -59,8 +56,6 @@ export default {
     padding: 2rem 1.5rem;
   }
   .details {
-    /* display: flex;
-    flex-direction: column; */
     width: fit-content;
   }
   .title, .author {
