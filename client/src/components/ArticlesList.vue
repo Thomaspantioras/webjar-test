@@ -20,9 +20,6 @@ export default {
       default: () => []
     }
   },
-  mounted() {
-    console.log("articles: ",this.articles)
-  }
 };
 </script>
 

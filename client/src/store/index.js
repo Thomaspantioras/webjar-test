@@ -10,6 +10,7 @@ export default new Vuex.Store({
     authorFullName: "",
     currentPage: 0,
     currentArticles: [],
+    shownArticlesByAuthor: false,
   },
   mutations: {
     setIsLoggedIn(state, payload) {
@@ -27,6 +28,9 @@ export default new Vuex.Store({
     setCurrentArticles(state, payload) {
       state.currentArticles = payload;
     },
+    setShownArticlesByAuthor(state, payload) {
+      state.shownArticlesByAuthor = payload;
+    },
   },
   getters: {
     isLoggedIn: (state) => {
@@ -43,6 +47,9 @@ export default new Vuex.Store({
     },
     currentArticles: (state) => {
       return state.currentArticles;
+    },
+    shownArticlesByAuthor: (state) => {
+      return state.shownArticlesByAuthor;
     },
   },
   actions: {},

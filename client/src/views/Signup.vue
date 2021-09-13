@@ -93,7 +93,6 @@ export default {
           email: this.email,
           password: this.password
         }
-          console.log("Im IN!: ", body)
 
         await api.registerAuthor(body)
       }else{

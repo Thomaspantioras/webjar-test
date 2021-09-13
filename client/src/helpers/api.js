@@ -12,30 +12,28 @@ const handleError =
 export const api = {
   registerAuthor: handleError(async (payload) => {
     const res = await axios.post(baseURL + "authors/", payload);
-    // console.log(res.data);
     return res.data;
   }),
   loginAuthor: handleError(async (payload) => {
     const res = await axios.post(baseURL + "authors/login", payload);
-    // console.log("API:", res.data);
     return res.data[0];
   }),
   createArticle: handleError(async (payload) => {
-    console.log("createArticle body:", payload);
     const res = await axios.post(baseURL + "articles", payload);
-    console.log("createArticle:", res.data);
     return res.data;
   }),
   getArticles: handleError(async (page) => {
     const res = await axios.get(baseURL + "articles/", {
       params: { page: page },
     });
-    // console.log(res.data);
     return res.data;
   }),
   getArticlesByAuthorId: handleError(async (id) => {
     const res = await axios.get(baseURL + "articles/" + id);
-    console.log("helper2", res.data);
+    return res.data;
+  }),
+  updateArticleViews: handleError(async (id, payload) => {
+    const res = await axios.put(baseURL + "articles/" + id, payload);
     return res.data;
   }),
   // getWord: handleError(async id => {

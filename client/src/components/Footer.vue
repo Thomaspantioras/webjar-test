@@ -1,6 +1,7 @@
 <template>
-  <div class="footer">
+  <div v-if="!shownArticlesByAuthor" class="footer">
     <a href="#" class="previous" @click="previousArticles">&laquo; Previous</a>
+    <div>Page {{currentPage + 1}}</div>
     <a href="#" class="next" @click="nextArticles">Next &raquo;</a>
   </div>
 </template>
@@ -16,7 +17,8 @@ import { mapGetters } from 'vuex';
     },
     computed: {
     ...mapGetters([
-      'currentPage'
+      'currentPage',
+      'shownArticlesByAuthor'
     ]),
     // getArticles: async () => {
     // const articles = await api.getArticles(this.currentPage);
@@ -29,15 +31,12 @@ import { mapGetters } from 'vuex';
           const articles = await api.getArticles(this.currentPage - 1);
           this.$store.commit('setCurrentArticles', articles);
           this.$store.commit('setCurrentPage', this.currentPage - 1);
-          // this.fArticles = await api.getArticles(this.currentPage - 1);
         }
-        console.log("previ!!!")
       },
       async nextArticles() {
         const articles = await api.getArticles(this.currentPage + 1);
         this.$store.commit('setCurrentArticles', articles);
         this.$store.commit('setCurrentPage', this.currentPage + 1);
-        console.log("nxt!!!")
       }
     },
   }

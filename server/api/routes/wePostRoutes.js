@@ -32,6 +32,11 @@ router.get("/articles/:id", (req, res, next) => {
   articleController.getArticlesByAuthorId(req, res, next);
 });
 
+// update the article views
+router.put("/articles/:id", (req, res, next) => {
+  articleController.updateArticleViews(req, res, next);
+});
+
 // router.get('/articles', (req, res, next) => {
 //   authorController.getAllArticles(req, res, next)
 // });

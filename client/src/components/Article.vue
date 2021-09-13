@@ -1,10 +1,13 @@
 <template>
 <div class="container">
-  <h1>{{article.title}}</h1>
+  <h1 class="title" @click="updateArticleViews">{{article.title}}</h1>
   <div class="details">
-    <div>{{article.author_full_name}}</div>
+    <div class="author" @click="getArticlesByAuthor">
+      <!-- <a href="#" class="previous" @click="previousArticles">&laquo; Previous</a> -->
+      <b>{{article.author_full_name}}</b>
+    </div>
     <!-- <div>{{article.date}}</div> -->
-    <div><b>{{formatedDate}}</b></div>
+    <div>{{formatedDate}}</div>
     <div>views: {{article.views}}</div>
   </div>
   <h2 v-if="article.subtitle">{{article.subtitle}}</h2>
@@ -18,6 +21,8 @@
 </template>
 
 <script>
+import { api } from '../helpers/api';
+
 export default {
   props: {
     article: {
@@ -31,11 +36,21 @@ export default {
     },
     formatedDate() {
       return new Date(this.article.date).toLocaleDateString();
-    }
+    },
   },
   mounted() {
     console.log("article: ",this.article)
-  }
+  },
+  methods: {
+    async getArticlesByAuthor() {
+      const articles = await api.getArticlesByAuthorId(this.article.author_id);
+      this.$store.commit('setCurrentArticles', articles);
+      this.$store.commit('setShownArticlesByAuthor', true);
+    },
+    async updateArticleViews() {
+      await api.updateArticleViews(this.article._id,{"views": this.article.views + 1});
+    }
+  },
 };
 </script>
 
@@ -47,6 +62,9 @@ export default {
     /* display: flex;
     flex-direction: column; */
     width: fit-content;
+  }
+  .title, .author {
+    cursor: pointer;
   }
   .description {
     padding: 2rem 6rem;

@@ -104,22 +104,12 @@ export default {
       formData.append('author_full_name', this.authorFullName);
       formData.append('article_image', this.selectedFile, this.selectedFile.name);
 
-      // const body = {
-      //   title: this.title,
-      //   description: this.description,
-      //   date: this.publishedDate,
-      //   author_id: this.authorId,
-      //   author_full_name: this.authorFullName
-      // }
-      // console.log("RESULT: ", ...formData)
       const result = await api.createArticle(formData);
-      // const result = await api.createArticle(body);
       if (result) this.$router.push("/");
 
     },
     onFiledSelected(event) {
       this.selectedFile = event.target.files[0];
-      // console.log("event: ", this.selectedFile)
     }
   },
 };

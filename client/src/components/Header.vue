@@ -28,7 +28,6 @@ export default {
   },
   methods: {
     logout() {
-      console.log("IMMMMMMMM");
       this.$store.commit('setIsLoggedIn', false);
       this.$store.commit('setAuthorFullName', "");
       this.$store.commit('setAuthorId', "");

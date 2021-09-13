@@ -21,17 +21,16 @@ export default {
     ArticlesList,
     // HelloWorld,
   },
-  data() {
-    return {
-      articles: [],
-      articlesById: []
-    };
-  },
+  // data() {
+  //   return {
+  //     articles: [],
+  //   };
+  // },
   async mounted() {
     const articles = await api.getArticles(this.currentPage);
     this.$store.commit('setCurrentArticles', articles);
     // this.articles = await api.getArticles(this.currentPage);
-    this.articlesById = await api.getArticlesByAuthorId("613b8946b960a236a9064727");
+    // this.articlesById = await api.getArticlesByAuthorId("613b8946b960a236a9064727");
   },
   computed: {
     ...mapGetters([
