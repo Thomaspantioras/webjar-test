@@ -15,6 +15,7 @@ export const api = {
     return res.data;
   }),
   loginAuthor: handleError(async (payload) => {
+    console.log("payload: ", payload);
     const res = await axios.post(baseURL + "authors/login", payload);
     return res.data[0];
   }),

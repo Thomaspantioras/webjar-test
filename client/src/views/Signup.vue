@@ -94,7 +94,10 @@ export default {
           password: this.password
         }
 
-        await api.registerAuthor(body)
+        const author = await api.registerAuthor(body);
+        if(author) {
+          this.$router.push("/");
+        }
       }else{
         console.log("Passwords do not match!")
       }
